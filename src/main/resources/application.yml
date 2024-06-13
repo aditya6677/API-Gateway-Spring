@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: API Gateway
+  cloud:
+    gateway:
+      routes:
+        - id : CITIZEN-SERVICE
+          uri:
+            lb://CITIZEN-SERVICE
+          predicates:
+            - Path=/citizen/**
+
+        - id: VAC-SERVICE
+          uri:
+            lb://VAC-SERVICE
+          predicates:
+            - Path=/vac/**
+
+server:
+  port: 8083
